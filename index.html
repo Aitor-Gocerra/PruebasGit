@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual de Referencia de Comandos Git</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📚 Manual de Referencia de Comandos Git</h1>
+            <p>Guía completa de comandos Git organizados por categoría funcional</p>
+        </header>
+
+        <div class="nav-menu">
+            <button class="nav-btn active" data-section="intro">Introducción</button>
+            <button class="nav-btn" data-section="config">Configuración</button>
+            <button class="nav-btn" data-section="workflow">Flujo Básico</button>
+            <button class="nav-btn" data-section="branches">Ramas</button>
+            <button class="nav-btn" data-section="collaboration">Colaboración</button>
+            <button class="nav-btn" data-section="inspection">Inspección</button>
+            <button class="nav-btn" data-section="advanced">Avanzado</button>
+            <button class="nav-btn" data-section="debug">Depuración</button>
+            <button class="nav-btn" data-section="admin">Administración</button>
+            <button class="nav-btn" data-section="plumbing">Bajo Nivel</button>
+        </div>
+
+        <!-- Sección Introducción -->
+        <div id="intro" class="section active">
+            <h2>🎯 Introducción: Propósito y Estructura del Manual</h2>
+            <div class="section-intro">
+                Este documento es un manual de referencia técnica diseñado para ayudar a desarrolladores experimentados a localizar rápidamente comandos de Git según su propósito funcional. Su objetivo es servir como una guía de consulta ágil, eliminando la necesidad de navegar por documentación extensa para encontrar la herramienta adecuada para una tarea específica.
+            </div>
+            <h3>Estructura del Manual</h3>
+            <p>La organización del manual sigue el ciclo de vida del desarrollo de software:</p>
+            <div class="commands-grid" style="grid-template-columns: 1fr;">
+                <div class="command-card">
+                    <div class="command-name">✓ Configuración Inicial</div>
+                    <div class="command-desc">Configuración y creación de repositorios</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">✓ Trabajo Diario</div>
+                    <div class="command-desc">Captura y gestión de cambios</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">✓ Gestión de Ramas</div>
+                    <div class="command-desc">Desarrollo paralelo y fusiones</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">✓ Colaboración</div>
+                    <div class="command-desc">Sincronización con equipos remotos</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">✓ Depuración</div>
+                    <div class="command-desc">Análisis y diagnóstico de código</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">✓ Administración</div>
+                    <div class="command-desc">Mantenimiento de repositorios</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección Configuración -->
+        <div id="config" class="section">
+            <h2>⚙️ Configuración e Inicialización de Proyectos</h2>
+            <div class="section-intro">
+                La configuración inicial y la creación de repositorios son el primer paso fundamental en cualquier proyecto gestionado con Git. Un entorno correctamente configurado es crucial para la estabilidad y eficiencia del flujo de trabajo.
+            </div>
+            <div class="commands-grid">
+                <div class="command-card">
+                    <div class="command-name">git</div>
+                    <div class="command-desc">El ejecutable principal del sistema Git; proporciona acceso a todo el conjunto de comandos.</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">git config</div>
+                    <div class="command-desc">Gestiona y establece variables de configuración a nivel de sistema, global o local (repositorio).</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">git help</div>
+                    <div class="command-desc">Muestra la documentación de ayuda para un comando específico de Git.</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">git bugreport</div>
+                    <div class="command-desc">Recopila información del sistema y del entorno para facilitar la creación de informes de errores.</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">Credential helpers</div>
+                    <div class="command-desc">Gestiona el almacenamiento seguro de credenciales (usuario/contraseña, tokens) para repositorios remotos.</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">git init</div>
+                    <div class="command-desc">Crea un nuevo repositorio Git vacío en un directorio existente o en uno nuevo.</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">git clone</div>
+                    <div class="command-desc">Crea una copia local de un repositorio remoto existente, incluyendo todo su historial de commits y ramas.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección Flujo Básico -->
+        <div id="workflow" class="section">
+            <h2>📝 Flujo de Trabajo Básico: Captura de Cambios</h2>
+            <div class="section-intro">
+                Este conjunto de comandos constituye el núcleo del flujo de trabajo diario en Git. Estos comandos operan principalmente entre el directorio de trabajo, el área de preparación (staging area) y el historial del repositorio.
+            </div>
+            <div class="commands-grid">
+                <div class="command-card">
+                    <div class="command-name">git add</div>
+                    <div class="command-desc">Añade los cambios de los archivos del directorio de trabajo al área de preparación para el próximo commit.</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">git status</div>
+                    <div class="command-desc">Muestra el estado de los archivos en el directorio de trabajo y en el área de preparación.</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">git commit</div>
+                    <div class="command-desc">Registra los cambios preparados (staged) como una nueva instantánea permanente en el historial del proyecto.</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">git notes</div>
+                    <div class="command-desc">Permite añadir, eliminar o leer notas adjuntas a objetos de commit sin modificar el propio commit.</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">git restore</div>
+                    <div class="command-desc">Restaura archivos del directorio de trabajo a un estado previo (desde el área de preparación o un commit).</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">git reset</div>
+                    <div class="command-desc">Mueve el puntero HEAD a un commit especificado, con modos: --soft, --mixed, y --hard.</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">git rm</div>
+                    <div class="command-desc">Elimina archivos tanto del directorio de trabajo como del área de preparación.</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">git mv</div>
+                    <div class="command-desc">Mueve o renombra un archivo, directorio o enlace simbólico, actualizando el índice de Git.</div>
+                </div>
+            </div>
+            <h3>Comandos Útiles Adicionales</h3>
+            <div class="subsection">
+                <h4 style="color: #667eea;">git log --oneline</h4>
+                <p>Muestra el historial de commits de forma compacta. Cada línea muestra:</p>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li><strong>Hash corto del commit</strong> (7 caracteres)</li>
+                    <li><strong>Mensaje del commit</strong></li>
+                    <li><strong>Referencias</strong> como HEAD, ramas, tags</li>
+                </ul>
+            </div>
+            <div class="warning">
+                <strong>⚠️ git clean:</strong> El comando <span class="highlight">git clean</span> elimina archivos no rastreados (untracked) del directorio de trabajo. ¡PRECAUCIÓN! Este comando elimina archivos permanentemente.
+            </div>
+        </div>
+
+        <!-- Sección Ramas -->
+        <div id="branches" class="section">
+            <h2>🌿 Gestión de Ramas y Fusiones</h2>
+            <div class="section-intro">
+                El modelo de ramificación de Git es un pilar fundamental que permite el desarrollo paralelo, la experimentación segura y la integración controlada de funcionalidades. Los comandos de esta categoría son cruciales para que los equipos trabajen en diferentes características de forma aislada.
+            </div>
+            <div class="commands-grid">
+                <div class="command-card">
+                    <div class="command-name">git branch</div>
+                    <div class="command-desc">Lista, crea o elimina ramas. Es el comando principal para la administración de las líneas de desarrollo.</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">git checkout</div>
+                    <div class="command-desc">Comando de doble propósito para cambiar de rama y restaurar archivos. Ahora reemplazado por switch y restore.</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">git switch</div>
+                    <div class="command-desc">Cambia a una rama especificada, facilitando la navegación entre líneas de desarrollo.</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">git merge</div>
+                    <div class="command-desc">Fusiona el historial de una o más ramas en la rama actual. Es el método principal para integrar cambios.</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">git mergetool</div>
+                    <div class="command-desc">Ejecuta herramientas de resolución de conflictos de fusión para ayudar a resolver diferencias complejas.</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">git stash</div>
+                    <div class="command-desc">Almacena temporalmente los cambios no confirmados para cambiar de rama sin hacer un commit incompleto.</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">git tag</div>
+                    <div class="command-desc">Crea, lista, elimina o verifica etiquetas firmadas con GPG, usadas para marcar puntos específicos en el historial (e.g., v1.0).</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">git worktree</div>
+                    <div class="command-desc">Gestiona múltiples directorios de trabajo vinculados a un mismo repositorio, permitiendo trabajar en varias ramas simultáneamente.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección Colaboración -->
+        <div id="collaboration" class="section">
+            <h2>🤝 Colaboración: Sincronización con Repositorios Remotos</h2>
+            <div class="section-intro">
+                La colaboración en equipos distribuidos es una de las fortalezas centrales de Git, y se fundamenta en la capacidad de sincronizar el trabajo entre diferentes repositorios. Los comandos de esta categoría son vitales para la interacción con servidores remotos.
+            </div>
+            <div class="commands-grid">
+                <div class="command-card">
+                    <div class="command-name">git fetch</div>
+                    <div class="command-desc">Descarga objetos y referencias de otro repositorio, pero no integra los cambios en la rama local.</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">git pull</div>
+                    <div class="command-desc">Obtiene los cambios de un repositorio remoto y los fusiona (merge) o rebasea (rebase) en la rama local actual.</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">git push</div>
+                    <div class="command-desc">Sube los commits locales a un repositorio remoto, actualizando las referencias remotas.</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">git remote</div>
+                    <div class="command-desc">Gestiona el conjunto de repositorios remotos cuyo seguimiento se está realizando (añadir, eliminar, renombrar).</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">git submodule</div>
+                    <div class="command-desc">Permite gestionar repositorios externos como subdirectorios dentro de otro repositorio, útil para dependencias de proyectos.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección Inspección -->
+        <div id="inspection" class="section">
+            <h2>🔍 Inspección y Comparación del Historial</h2>
+            <div class="section-intro">
+                La capacidad de inspeccionar el historial, comparar versiones y analizar la evolución de un proyecto es fundamental para entender su desarrollo, depurar regresiones y revisar contribuciones.
+            </div>
+            <div class="commands-grid">
+                <div class="command-card">
+                    <div class="command-name">git show</div>
+                    <div class="command-desc">Muestra varios tipos de objetos de Git (commits, tags, árboles) de forma legible para el usuario.</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">git log</div>
+                    <div class="command-desc">Muestra el historial de commits, comenzando desde el más reciente.</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">git diff</div>
+                    <div class="command-desc">Muestra las diferencias entre commits, el área de preparación y el directorio de trabajo.</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">git difftool</div>
+                    <div class="command-desc">Abre una herramienta de comparación gráfica para visualizar las diferencias mostradas por git diff.</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">git range-diff</div>
+                    <div class="command-desc">Compara dos rangos de commits para identificar qué cambios son equivalentes y cuáles no.</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">git shortlog</div>
+                    <div class="command-desc">Resume la salida de git log de una forma agrupada y concisa, ideal para notas de lanzamiento.</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">git describe</div>
+                    <div class="command-desc">Genera una descripción legible y única para cualquier commit, basada en la etiqueta más cercana.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección Avanzado -->
+        <div id="advanced" class="section">
+            <h2>⚡ Manipulación Avanzada de Commits y Aplicación de Parches</h2>
+            <div class="section-intro">
+                Esta categoría agrupa herramientas avanzadas para la manipulación precisa del historial y la gestión de cambios en forma de parches. Aunque potentes, deben usarse con precaución, especialmente en ramas compartidas, ya que pueden reescribir el historial del proyecto.
+            </div>
+            <div class="commands-grid">
+                <div class="command-card">
+                    <div class="command-name">git apply</div>
+                    <div class="command-desc">Aplica un parche (patch) a los archivos y/o al área de preparación.</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">git cherry-pick</div>
+                    <div class="command-desc">Aplica los cambios introducidos por commits existentes de otra rama en la rama actual.</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">git rebase</div>
+                    <div class="command-desc">Re-aplica una serie de commits sobre una nueva base. Su modo interactivo (-i) es potente para reescribir el historial.</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">git revert</div>
+                    <div class="command-desc">Crea un nuevo commit que revierte los cambios introducidos por uno o más commits anteriores.</div>
+                </div>
+            </div>
+            <div class="warning">
+                <strong>⚠️ Advertencia:</strong> Los comandos de reescritura de historial como <span class="highlight">git rebase</span> y <span class="highlight">git filter-branch</span> pueden causar problemas en ramas compartidas. Úsalos solo en ramas locales.
+            </div>
+        </div>
+
+        <!-- Sección Depuración -->
+        <div id="debug" class="section">
+            <h2>🐛 Depuración y Diagnóstico de Código</h2>
+            <div class="section-intro">
+                Git no solo gestiona el historial de un proyecto, sino que también proporciona potentes utilidades para la depuración y el análisis de código. Estos comandos ayudan a identificar la introducción de errores en el historial, determinar la autoría de cada línea de código y realizar búsquedas de contenido.
+            </div>
+            <div class="commands-grid">
+                <div class="command-card">
+                    <div class="command-name">git bisect</div>
+                    <div class="command-desc">Realiza una búsqueda binaria en el historial de commits para encontrar rápidamente el commit que introdujo un error.</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">git blame</div>
+                    <div class="command-desc">Muestra qué revisión y autor modificaron por última vez cada línea de un archivo.</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">git grep</div>
+                    <div class="command-desc">Realiza una búsqueda de patrones de texto en los archivos rastreados por Git, opcionalmente a través de todo el historial.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección Administración -->
+        <div id="admin" class="section">
+            <h2>🛠️ Administración y Mantenimiento del Repositorio</h2>
+            <div class="section-intro">
+                La administración de un repositorio es clave para mantener su eficiencia, integridad y limpieza a lo largo del tiempo, especialmente en proyectos de larga duración con muchos colaboradores.
+            </div>
+            <div class="commands-grid">
+                <div class="command-card">
+                    <div class="command-name">git clean</div>
+                    <div class="command-desc">Elimina archivos y directorios no rastreados del directorio de trabajo.</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">git gc</div>
+                    <div class="command-desc">Ejecuta la recolección de basura (garbage collection), optimizando el repositorio y eliminando objetos innecesarios.</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">git fsck</div>
+                    <div class="command-desc">Verifica la conectividad y validez de los objetos en la base de datos de Git.</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">git reflog</div>
+                    <div class="command-desc">Gestiona el registro de referencias (reflog), que almacena el historial de las puntas de las ramas y de HEAD.</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">git filter-branch</div>
+                    <div class="command-desc">Reescribe el historial. Se recomienda usar git-filter-repo como alternativa más segura y rápida.</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">git instaweb</div>
+                    <div class="command-desc">Ejecuta instantáneamente un navegador web con una interfaz para el repositorio local.</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">git archive</div>
+                    <div class="command-desc">Crea un archivo (e.g., zip, tar.gz) con el contenido de un árbol de commits específico.</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">git bundle</div>
+                    <div class="command-desc">Empaqueta objetos y referencias en un archivo, útil para compartir repositorios sin conexión de red directa.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección Bajo Nivel -->
+        <div id="plumbing" class="section">
+            <h2>🔧 Herramientas Avanzadas y de Bajo Nivel (Plumbing)</h2>
+            <div class="section-intro">
+                Esta categoría final comprende el conjunto de herramientas de bajo nivel de Git, conocidas como "plumbing", que realizan las tareas fundamentales sobre las que se construyen los comandos de alto nivel. Aunque no son de uso diario para la mayoría de los desarrolladores, son fundamentales para la creación de scripts y automatización de flujos de trabajo.
+            </div>
+
+            <h3>Comandos de Bajo Nivel (Plumbing)</h3>
+            <div class="commands-grid">
+                <div class="command-card">
+                    <div class="command-name">git cat-file</div>
+                    <div class="command-desc">Proporciona el tipo y contenido de los objetos en la base de datos de Git.</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">git check-ignore</div>
+                    <div class="command-desc">Depura los archivos .gitignore para ver por qué una ruta está siendo ignorada.</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">git checkout-index</div>
+                    <div class="command-desc">Copia archivos desde el índice al directorio de trabajo.</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">git commit-tree</div>
+                    <div class="command-desc">Crea un nuevo objeto de commit a partir de un objeto de árbol (tree) dado.</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">git count-objects</div>
+                    <div class="command-desc">Cuenta el número de objetos desempaquetados y su consumo de disco.</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">git diff-index</div>
+                    <div class="command-desc">Compara un árbol con el directorio de trabajo o el índice.</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">git for-each-ref</div>
+                    <div class="command-desc">Itera sobre todas las referencias y ejecuta un comando para cada una.</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">git hash-object</div>
+                    <div class="command-desc">Calcula el ID de un objeto y opcionalmente lo escribe en la base de datos.</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">git ls-files</div>
+                    <div class="command-desc">Muestra información sobre los archivos en el índice y en el directorio de trabajo.</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">git ls-tree</div>
+                    <div class="command-desc">Lista el contenido de un objeto de árbol.</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">git merge-base</div>
+                    <div class="command-desc">Encuentra el mejor ancestro común entre dos commits para usarlo en una fusión.</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">git read-tree</div>
+                    <div class="command-desc">Lee la información de un árbol en el índice.</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">git rev-list</div>
+                    <div class="command-desc">Lista los objetos de commit en orden cronológico inverso.</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">git rev-parse</div>
+                    <div class="command-desc">Analiza y estandariza los parámetros de revisión.</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">git show-ref</div>
+                    <div class="command-desc">Lista las referencias en un repositorio local.</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">git symbolic-ref</div>
+                    <div class="command-desc">Lee, modifica y elimina referencias simbólicas como HEAD.</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">git update-index</div>
+                    <div class="command-desc">Registra el contenido de archivos en el índice.</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">git update-ref</div>
+                    <div class="command-desc">Actualiza de forma segura el objeto al que apunta una referencia.</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">git verify-pack</div>
+                    <div class="command-desc">Valida los archivos de empaquetado (.pack).</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">git write-tree</div>
+                    <div class="command-desc">Crea un objeto de árbol a partir del contenido del índice actual.</div>
+                </div>
+            </div>
+
+            <h3>Integración con Correo Electrónico</h3>
+            <div class="commands-grid">
+                <div class="command-card">
+                    <div class="command-name">git am</div>
+                    <div class="command-desc">Aplica una serie de parches desde un buzón de correo.</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">git imap-send</div>
+                    <div class="command-desc">Sube una colección de parches desde una entrada estándar a una carpeta IMAP.</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">git format-patch</div>
+                    <div class="command-desc">Prepara una serie de commits para ser enviados como parches por correo electrónico.</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">git send-email</div>
+                    <div class="command-desc">Envía una colección de parches por correo electrónico.</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">git request-pull</div>
+                    <div class="command-desc">Genera un resumen de los cambios para solicitar su inclusión en otro repositorio.</div>
+                </div>
+            </div>
+
+            <h3>Sistemas Externos e Integración</h3>
+            <div class="commands-grid">
+                <div class="command-card">
+                    <div class="command-name">git svn</div>
+                    <div class="command-desc">Opera como un cliente de Subversion para interactuar con repositorios SVN.</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">git fast-import</div>
+                    <div class="command-desc">Importa datos de forma masiva desde otro sistema de control de versiones a Git.</div>
+                </div>
+            </div>
+
+            <h3>Administración de Servidor</h3>
+            <div class="commands-grid">
+                <div class="command-card">
+                    <div class="command-name">git daemon</div>
+                    <div class="command-desc">Ejecuta un servidor Git simple para repositorios públicos sin autenticación.</div>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">git update-server-info</div>
+                    <div class="command-desc">Actualiza archivos auxiliares necesarios para servir un repositorio a través de protocolos "dumb".</div>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <strong>ℹ️ Nota:</strong> Los comandos de bajo nivel son herramientas poderosas para la automatización y scripting, pero requieren un profundo entendimiento de la arquitectura interna de Git. Úsalos con cuidado.
+            </div>
+        </div>
+
+        <footer>
+            <p><strong>Manual de Referencia de Comandos Git por Categoría Funcional</strong></p>
+            <p>Una guía completa para desarrolladores que desean dominar Git de manera eficiente</p>
+            <p style="margin-top: 15px; font-size: 0.9em; color: #999;">© 2025 - Aitor Gomez Cerrato - Todos los derechos reservados</p>
+        </footer>
+    </div>
+
+    <script>
+        // Funcionalidad de navegación
+        const navButtons = document.querySelectorAll('.nav-btn');
+        const sections = document.querySelectorAll('.section');
+
+        navButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remover clase active de todos los botones
+                navButtons.forEach(btn => btn.classList.remove('active'));
+                // Remover clase active de todas las secciones
+                sections.forEach(section => section.classList.remove('active'));
+
+                // Añadir clase active al botón clickeado
+                button.classList.add('active');
+
+                // Mostrar la sección correspondiente
+                const sectionId = button.getAttribute('data-section');
+                const section = document.getElementById(sectionId);
+                if (section) {
+                    section.classList.add('active');
+                }
+            });
+        });
+
+        // Hacer scroll suave hacia la sección
+        document.addEventListener('DOMContentLoaded', () => {
+            const hash = window.location.hash.slice(1);
+            if (hash) {
+                const button = document.querySelector(`[data-section="${hash}"]`);
+                if (button) {
+                    button.click();
+                }
+            }
+        });
+    </script>
+</body>
+</html>
